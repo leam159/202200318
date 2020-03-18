@@ -53,7 +53,21 @@ public class Roomadepter extends ArrayAdapter<Room> {
         }else {
             prices.setText(String.format("%,d",data,prices));
         }
+        //주소/층수 결합
 
+        String floorstr ="";
+        //층>0,층==0
+        if (data.getFloor()>0){
+            floorstr =String.format("%d층",data.getFloor());
+        }
+        else if (data.getFloor()==0){
+            floorstr="반지하";
+        }
+        else {
+            floorstr=String.format("지하%d층",data.getFloor()*-1);
+        }
+
+        addressAndFloorTxt.setText(String.format("%s,%s층",data.getAddress(),floorstr));
 
 
         return row;
